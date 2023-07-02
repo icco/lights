@@ -40,34 +40,34 @@ func main() {
 	g := 0
 	b := 0
 
-		t := time.Now()
-		hour := t.Hour()
-		minute := t.Minute()
+	t := time.Now()
+	hour := t.Hour()
+	minute := t.Minute()
 
-		hourten := hour / 10
-		hourunit := hour % 10
-		minuteten := minute / 10
-		minuteunit := minute % 10
+	hourten := hour / 10
+	hourunit := hour % 10
+	minuteten := minute / 10
+	minuteunit := minute % 10
 
-		r, g, b = breakOut(colours[hourten][:])
-		blinkt.SetPixel(0, r, g, b)
-		blinkt.SetPixel(1, r, g, b)
+	r, g, b = breakOut(colours[hourten][:])
+	blinkt.SetPixel(0, r, g, b)
+	blinkt.SetPixel(1, r, g, b)
 
-		r, g, b = breakOut(colours[hourunit][:])
-		blinkt.SetPixel(2, r, g, b)
-		blinkt.SetPixel(3, r, g, b)
+	r, g, b = breakOut(colours[hourunit][:])
+	blinkt.SetPixel(2, r, g, b)
+	blinkt.SetPixel(3, r, g, b)
 
-		r, g, b = breakOut(colours[minuteten][:])
-		blinkt.SetPixel(4, r, g, b)
-		blinkt.SetPixel(5, r, g, b)
+	r, g, b = breakOut(colours[minuteten][:])
+	blinkt.SetPixel(4, r, g, b)
+	blinkt.SetPixel(5, r, g, b)
 
-		r, g, b = breakOut(colours[minuteunit][:])
-		blinkt.SetPixel(6, r, g, b)
-		blinkt.SetPixel(7, r, g, b)
+	r, g, b = breakOut(colours[minuteunit][:])
+	blinkt.SetPixel(6, r, g, b)
+	blinkt.SetPixel(7, r, g, b)
 
-		blinkt.Show()
-		Delay(500)
+	blinkt.Show()
+	Delay(500)
 
-		blinkt.Show()
-		Delay(500)
+	blinkt.Show()
+	Delay(500)
 }
