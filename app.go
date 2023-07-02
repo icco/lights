@@ -40,8 +40,6 @@ func main() {
 	g := 0
 	b := 0
 
-	for {
-
 		t := time.Now()
 		hour := t.Hour()
 		minute := t.Minute()
@@ -70,10 +68,6 @@ func main() {
 		blinkt.Show()
 		Delay(500)
 
-		// blinkt.SetPixel(7, 0, 0, 0)
-
 		blinkt.Show()
 		Delay(500)
-
-	}
 }
