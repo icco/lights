@@ -1,3 +1,3 @@
-## resistor_clock
+## lights
 
-A port of the Python example `resistor_clock` by Pimoroni.
+Based on https://github.com/alexellis/blinkt_go
