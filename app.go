@@ -22,8 +22,8 @@ func getTwilightTimes(latitude, longitude float64) (startTwilight, endTwilight t
 	// Calculate the times for astronomical twilight
 	times := suncalc.GetTimes(date, latitude, longitude)
 
-	startTwilight = times["astronomicalDawn"]
-	endTwilight = times["astronomicalDusk"]
+	startTwilight = times["astronomicalDawn"].Value
+	endTwilight = times["astronomicalDusk"].Value
 
 	return startTwilight, endTwilight, nil
 }
@@ -114,6 +114,6 @@ func main() {
 	blinkt.SetPixel(6, r, g, b)
 	blinkt.SetPixel(7, r, g, b)
 
-  blinkt.Show()
-  Delay(500)
+	blinkt.Show()
+	Delay(500)
 }
