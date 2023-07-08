@@ -67,7 +67,4 @@ func main() {
 
 		blinkt.Show()
 		Delay(500)
-
-		blinkt.Show()
-		Delay(500)
 }
