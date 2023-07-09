@@ -9,10 +9,10 @@ import (
 	"github.com/sixdouglas/suncalc"
 )
 
-func breakOut(colours []int) (int, int, int) {
-	r := colours[0]
-	g := colours[1]
-	b := colours[2]
+func breakOut(colors []int) (int, int, int) {
+	r := colors[0]
+	g := colors[1]
+	b := colors[2]
 	return r, g, b
 }
 
@@ -68,9 +68,9 @@ func main() {
 
 	blinkt := NewBlinkt(brightness)
 
-	blinkt.SetClearOnExit(true)
+	blinkt.SetClearOnExit(false)
 
-	colours := [10][3]int{
+	colors := [10][3]int{
 		{0, 0, 0},       // 0 black
 		{139, 69, 19},   // 1 brown
 		{255, 0, 0},     // 2 red
@@ -99,21 +99,23 @@ func main() {
 	minuteten := minute / 10
 	minuteunit := minute % 10
 
-	r, g, b = breakOut(colours[hourten][:])
+	r, g, b = breakOut(colors[hourten][:])
 	blinkt.SetPixel(0, r, g, b)
 	blinkt.SetPixel(1, r, g, b)
 
-	r, g, b = breakOut(colours[hourunit][:])
+	r, g, b = breakOut(colors[hourunit][:])
 	blinkt.SetPixel(2, r, g, b)
 	blinkt.SetPixel(3, r, g, b)
 
-	r, g, b = breakOut(colours[minuteten][:])
+	r, g, b = breakOut(colors[minuteten][:])
 	blinkt.SetPixel(4, r, g, b)
 	blinkt.SetPixel(5, r, g, b)
 
-	r, g, b = breakOut(colours[minuteunit][:])
+	r, g, b = breakOut(colors[minuteunit][:])
 	blinkt.SetPixel(6, r, g, b)
 	blinkt.SetPixel(7, r, g, b)
+
+	log.Printf("%s -> brightness: %f")
 
 	blinkt.Show()
 	Delay(500)
