@@ -1,21 +1,27 @@
-FROM resin/rpi-raspbian
+FROM balenalib/raspberrypi3-golang
 
-# Install Go 1.7.5 and enough of a build-chain to build wiringpi (in C)
-RUN apt-get update && \
-    apt-get install -qy build-essential wiringpi git curl ca-certificates && \
-    curl -sSLO https://storage.googleapis.com/golang/go1.7.5.linux-armv6l.tar.gz && \
-	mkdir -p /usr/local/go && \
-	tar -xvf go1.7.5.linux-armv6l.tar.gz -C /usr/local/go/ --strip-components=1
+RUN apt update && \
+    apt install -qy build-essential git curl ca-certificates ssh jq
 
 ENV PATH=$PATH:/usr/local/go/bin/
 ENV GOPATH=/go/
+RUN go version
 
-RUN mkdir -p /go/src/github.com/alexellis/blinkt_go_examples/resistor_clock
-WORKDIR /go/src/github.com/alexellis/blinkt_go_examples/resistor_clock
+RUN curl -svL \
+  -H "Accept: application/vnd.github+json" \
+  -H "X-GitHub-Api-Version: 2022-11-28" \
+  https://api.github.com/meta | jq -r '.ssh_keys | map("github.com "+.) | .[]' >> /etc/ssh/known_hosts
 
-COPY app.go	.
+RUN git clone https://github.com/WiringPi/WiringPi.git && \
+    cd WiringPi && \
+    ./build
+
+RUN mkdir -p /go/src/github.com/icco/lights
+WORKDIR /go/src/github.com/icco/lights
+
+COPY .	.
 RUN go get -d -v
 
-RUN go build
+RUN go build .
 
-CMD ["./resistor_clock"]
+CMD ["./lights"]
