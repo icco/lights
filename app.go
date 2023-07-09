@@ -115,7 +115,7 @@ func main() {
 	blinkt.SetPixel(6, r, g, b)
 	blinkt.SetPixel(7, r, g, b)
 
-	log.Printf("%s -> brightness: %f")
+	log.Printf("%s -> brightness: %f", t, brightness)
 
 	blinkt.Show()
 	Delay(500)
