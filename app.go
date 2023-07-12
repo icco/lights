@@ -42,7 +42,7 @@ func getCurrentBrightness() (float64, error) {
 	equidistant := end.Add(start.Sub(end) / 2)
 
 	// Calculate the duration between the equidistant point and the current time
-	duration := now.Sub(equidistant)
+	duration := equidistance.Sub(now)
 
 	// Convert the duration to hours
 	sec := duration.Seconds()
@@ -50,6 +50,9 @@ func getCurrentBrightness() (float64, error) {
 
 	// Calculate the brightness using a sine function
 	brightness := math.Sin(2 * math.Pi * (sec / 86400))
+
+	// Adjust the brightness range from [-1, 1] to [0, 0.5]
+	brightness = (brightness + 1) / 4
 
 	return brightness, nil
 }
