@@ -39,14 +39,14 @@ func getCurrentBrightness() (float64, error) {
 	now := time.Now()
 
 	// Calculate the equidistant point between start and end twilight
-	equidistant := end.Add(start.Sub(end) / 2)
+	mid := end.Add(start.Sub(end) / 2)
 
 	// Calculate the duration between the equidistant point and the current time
-	duration := equidistance.Sub(now)
+	duration := mid.Sub(now)
 
 	// Convert the duration to hours
 	sec := duration.Seconds()
-	log.Printf("now: %s -> (middle: %s) %s", now, equidistant, duration)
+	log.Printf("now: %s -> (middle: %s) %s", now, mid, duration)
 
 	// Calculate the brightness using a sine function
 	brightness := math.Sin(2 * math.Pi * (sec / 86400))
