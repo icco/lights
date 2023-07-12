@@ -48,7 +48,7 @@ func getCurrentBrightness() (float64, error) {
 
 	// Convert the duration to hours
 	sec := duration.Seconds()
-	log.Printf("now: %s -> %s", now, duration)
+	log.Printf("now: %s -> (middle: %s) %s", now, equidistant, duration)
 
 	// Calculate the brightness using a sine function
 	brightness := math.Sin(2 * math.Pi * sec / 86400)
