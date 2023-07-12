@@ -26,7 +26,7 @@ func getTwilightTimes() (time.Time, time.Time, error) {
 	end := times[suncalc.Sunset].Value.Local()
 	start := times[suncalc.Sunrise].Value.Local()
 
-	log.Printf("twilight: %s -> %s", startTwilight, endTwilight)
+	log.Printf("twilight: %s -> %s", start, end)
 
 	return start, end, nil
 }
