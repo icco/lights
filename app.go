@@ -16,27 +16,29 @@ func breakOut(colors []int) (int, int, int) {
 	return r, g, b
 }
 
-func getTwilightTimes(latitude, longitude float64) (startTwilight, endTwilight time.Time, err error) {
+func getTwilightTimes(latitude, longitude float64) (time.Time, time.Time, error) {
 	// Get the current date
-	date := time.Now().UTC()
+	date := time.Now()
 
 	// Calculate the times for astronomical twilight
 	times := suncalc.GetTimes(date, latitude, longitude)
 
-	startTwilight = times["astronomicalDawn"].Value
-	endTwilight = times["astronomicalDusk"].Value
+	startTwilight := times["astronomicalDawn"].Value
+	endTwilight := times["astronomicalDusk"].Value
+
+	log.Printf("twilight: %s -> %s", startTwilight, endTwilight)
 
 	return startTwilight, endTwilight, nil
 }
 
-func getCurrentBrightness(latitude, longitude float64) (brightness float64, err error) {
+func getCurrentBrightness(latitude, longitude float64) (float64, error) {
 	startTwilight, endTwilight, err := getTwilightTimes(latitude, longitude)
 	if err != nil {
 		return 0, err
 	}
 
 	// Get the current time
-	now := time.Now().UTC()
+	now := time.Now()
 
 	// Calculate the equidistant point between start and end twilight
 	equidistant := startTwilight.Add(endTwilight.Sub(startTwilight) / 2)
@@ -48,7 +50,7 @@ func getCurrentBrightness(latitude, longitude float64) (brightness float64, err 
 	hours := duration.Hours()
 
 	// Calculate the brightness using a sine function
-	brightness = math.Sin(2 * math.Pi * hours / 24)
+	brightness := math.Sin(2 * math.Pi * hours / 24)
 
 	// Adjust the brightness range from [-1, 1] to [0, 0.5]
 	brightness = (brightness + 1) / 4
