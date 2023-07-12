@@ -16,23 +16,29 @@ func breakOut(colors []int) (int, int, int) {
 	return r, g, b
 }
 
-func getTwilightTimes(latitude, longitude float64) (time.Time, time.Time, error) {
-	// Get the current date
+func getTwilightTimes() (time.Time, time.Time, error) {
+	latitude := 41.5047
+	longitude := -73.9696
+
 	date := time.Now()
+	newYork, err := time.LoadLocation("America/New_York")
+	if err != nil {
+		return nil, nil, err
+	}
 
 	// Calculate the times for astronomical twilight
 	times := suncalc.GetTimes(date, latitude, longitude)
 
-	startTwilight := times["astronomicalDawn"].Value
-	endTwilight := times["astronomicalDusk"].Value
+	startTwilight := times[suncalc.Night].Value
+	endTwilight := times[suncalc.NightEnd].Value
 
 	log.Printf("twilight: %s -> %s", startTwilight, endTwilight)
 
 	return startTwilight, endTwilight, nil
 }
 
-func getCurrentBrightness(latitude, longitude float64) (float64, error) {
-	startTwilight, endTwilight, err := getTwilightTimes(latitude, longitude)
+func getCurrentBrightness() (float64, error) {
+	startTwilight, endTwilight, err := getTwilightTimes()
 	if err != nil {
 		return 0, err
 	}
@@ -59,10 +65,7 @@ func getCurrentBrightness(latitude, longitude float64) (float64, error) {
 }
 
 func main() {
-	latitude := 41.5047
-	longitude := -73.9696
-
-	brightness, err := getCurrentBrightness(latitude, longitude)
+	brightness, err := getCurrentBrightness()
 	if err != nil {
 		log.Printf("error: %s", err)
 		return
