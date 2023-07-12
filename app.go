@@ -23,8 +23,8 @@ func getTwilightTimes() (time.Time, time.Time, error) {
 	date := time.Now().UTC()
 	times := suncalc.GetTimes(date, latitude, longitude)
 
-	startTwilight := times[suncalc.Night].Value.Local()
-	endTwilight := times[suncalc.NightEnd].Value.Local()
+	startTwilight := times[suncalc.Sunset].Value.Local()
+	endTwilight := times[suncalc.Sunrise].Value.Local()
 
 	log.Printf("twilight: %s -> %s", startTwilight, endTwilight)
 
