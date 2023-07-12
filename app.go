@@ -20,19 +20,19 @@ func getTwilightTimes() (time.Time, time.Time, error) {
 	latitude := 41.5047
 	longitude := -73.9696
 
-	date := time.Now().UTC()
+	date := time.Now()
 	times := suncalc.GetTimes(date, latitude, longitude)
 
-	startTwilight := times[suncalc.Sunset].Value.Local()
-	endTwilight := times[suncalc.Sunrise].Value.Local()
+	end := times[suncalc.Sunset].Value.Local()
+	start := times[suncalc.Sunrise].Value.Local()
 
 	log.Printf("twilight: %s -> %s", startTwilight, endTwilight)
 
-	return startTwilight, endTwilight, nil
+	return start, end, nil
 }
 
 func getCurrentBrightness() (float64, error) {
-	startTwilight, endTwilight, err := getTwilightTimes()
+	start, end, err := getTwilightTimes()
 	if err != nil {
 		return 0, err
 	}
@@ -41,7 +41,7 @@ func getCurrentBrightness() (float64, error) {
 	now := time.Now()
 
 	// Calculate the equidistant point between start and end twilight
-	equidistant := startTwilight.Add(endTwilight.Sub(startTwilight) / 2)
+	equidistant := start.Add(end.Sub(start) / 2)
 
 	// Calculate the duration between the equidistant point and the current time
 	duration := now.Sub(equidistant)
