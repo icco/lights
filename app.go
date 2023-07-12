@@ -21,12 +21,6 @@ func getTwilightTimes() (time.Time, time.Time, error) {
 	longitude := -73.9696
 
 	date := time.Now()
-	newYork, err := time.LoadLocation("America/New_York")
-	if err != nil {
-		return nil, nil, err
-	}
-
-	// Calculate the times for astronomical twilight
 	times := suncalc.GetTimes(date, latitude, longitude)
 
 	startTwilight := times[suncalc.Night].Value
