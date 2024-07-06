@@ -20,9 +20,9 @@ RUN mkdir -p /go/src/github.com/icco/lights
 WORKDIR /go/src/github.com/icco/lights
 
 COPY .	.
-RUN go get -d -v
+RUN go get -d -v ./...
 
 RUN go build -o /go/bin/lights ./lights
 RUN go build -o /go/bin/cube ./cube
 
-CMD ["./lights"]
+CMD ["/go/bin/lights"]
