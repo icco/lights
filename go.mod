@@ -1,6 +1,6 @@
 module github.com/icco/lights
 
-go 1.15
+go 1.18
 
 require (
 	github.com/alexellis/blinkt_go v0.0.0-20180120180744-cc0ca163e0bc
