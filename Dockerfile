@@ -1,7 +1,6 @@
-FROM balenalib/raspberrypi3-golang
+FROM balenalib/raspberrypi3-golang:20240429
 
-RUN apt update && \
-    apt install -qy build-essential git curl ca-certificates ssh jq
+RUN apt update && apt install -qy build-essential git curl ca-certificates ssh jq
 
 ENV PATH=$PATH:/usr/local/go/bin/
 ENV GOPATH=/go/
