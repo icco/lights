@@ -1,41 +1,16 @@
 version: 2
 updates:
-  - package-ecosystem: "npm"
-    directory: "/"
+  - package-ecosystem: gomod
+    directory: /
     open-pull-requests-limit: 10
     schedule:
-      interval: "weekly"
-    versioning-strategy: increase
-    groups:
-      dev:
-        dependency-type: "development"
-        update-types:
-          - "minor"
-          - "patch"
-      semrel:
-        patterns:
-          - "@semantic-release*"
-          - "semantic-releas*"
-          - "conventional-changelog*"
-        update-types:
-          - "major"
+      interval: weekly
   - package-ecosystem: "docker"
     directory: "/"
     open-pull-requests-limit: 10
     schedule:
       interval: "weekly"
-  - package-ecosystem: "terraform"
-    directory: "/terraform/prd"
+  - package-ecosystem: github-actions
+    directory: /
     schedule:
-      interval: "weekly"
-    versioning-strategy: increase
-    groups:
-      minor:
-        update-types:
-          - "minor"
-          - "patch"
-      hashicorp:
-        patterns:
-          - "hashicorp/*"
-        update-types:
-          - "major"
+      interval: weekly
