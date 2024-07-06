@@ -5,7 +5,7 @@ import (
 	"math"
 	"time"
 
-	. "github.com/alexellis/blinkt_go"
+	blinktGo "github.com/alexellis/blinkt_go"
 	"github.com/sixdouglas/suncalc"
 )
 
@@ -64,7 +64,7 @@ func main() {
 		return
 	}
 
-	blinkt := NewBlinkt(brightness)
+	blinkt := blinktGo.NewBlinkt(brightness)
 
 	blinkt.SetClearOnExit(false)
 
@@ -82,7 +82,7 @@ func main() {
 	}
 
 	blinkt.Setup()
-	Delay(100)
+	blinktGo.Delay(100)
 
 	r := 0
 	g := 0
@@ -116,5 +116,5 @@ func main() {
 	log.Printf("brightness: %f", brightness)
 
 	blinkt.Show()
-	Delay(500)
+	blinktGo.Delay(500)
 }
