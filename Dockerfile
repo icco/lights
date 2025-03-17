@@ -1,4 +1,4 @@
-FROM balenalib/raspberrypi3-golang:20240429
+FROM balenalib/raspberrypi3-golang:20241201
 
 
 RUN apt update
