@@ -2,7 +2,7 @@ github.com/alexellis/blinkt_go v0.0.0-20180120180744-cc0ca163e0bc h1:J/jqFQqoBMa
 github.com/alexellis/blinkt_go v0.0.0-20180120180744-cc0ca163e0bc/go.mod h1:IeFkr+RPLd7XL6LrhpHfSZerUIwVvVhFMwwrOr/FhYU=
 github.com/alexellis/rpi v0.0.0-20170116141016-ab6a4e79f0bd h1:Mx9cUprDyCdGzjWwFRZmrL/G4Cs89/EB8QcZ6j+Mx1Y=
 github.com/alexellis/rpi v0.0.0-20170116141016-ab6a4e79f0bd/go.mod h1:/u5IOmNVyGUK5Y/TV6Dk+4BlqWTEhmvbzvpKPSeZXZQ=
-github.com/rogpeppe/rog-go v0.0.0-20210831093509-3c886aea54f1 h1:/OCwqErMqAvGqXRIHZUrPQjvLJ757WSqxnlphaw+9Os=
-github.com/rogpeppe/rog-go v0.0.0-20210831093509-3c886aea54f1/go.mod h1:k0jrzHKdCmJ6zT6iJj0pE0xqilSXprArlMF7cUBMO/w=
-github.com/sixdouglas/suncalc v0.0.0-20230303054245-f8bc8c69d09e h1:I/wuFDXuedEYC+iSy0jzO7adpH5n+mnblZpozttUP1Y=
-github.com/sixdouglas/suncalc v0.0.0-20230303054245-f8bc8c69d09e/go.mod h1:IxOCrQX3pAL52wPiWuamnWxGcuyWANPyQfwcRb0iDqc=
+github.com/rogpeppe/rog-go v0.0.0-20241126162219-e91a9a7b5d33 h1:x65IpeYcreMYFXKtl1NXh/iLAU76sLRUI0Xo7rQsG3I=
+github.com/rogpeppe/rog-go v0.0.0-20241126162219-e91a9a7b5d33/go.mod h1:e29T/pDK7s/p+ubI4/udmpw1CgzhGKgmITwMLwfxE2E=
+github.com/sixdouglas/suncalc v0.0.0-20250114185126-291b1938b70c h1:Lyrtmwq1VO3vK30KXmA4S4u816l/HqyT11d75WR0UiU=
+github.com/sixdouglas/suncalc v0.0.0-20250114185126-291b1938b70c/go.mod h1:IxOCrQX3pAL52wPiWuamnWxGcuyWANPyQfwcRb0iDqc=
