@@ -1,3 +1,3 @@
-module github.com/icco/lights
+module go.icco.me/lights
 
 go 1.15
