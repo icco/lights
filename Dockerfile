@@ -1,8 +1,7 @@
-FROM balenalib/raspberrypi3-golang:20241201
+FROM golang:1.26-trixie
 
 
-RUN apt update
-RUN apt install -qy build-essential git curl ca-certificates ssh jq
+RUN apt-get update && apt-get install -qy build-essential git curl ca-certificates ssh jq
 
 ENV PATH=$PATH:/usr/local/go/bin/
 ENV GOPATH=/go/
@@ -15,13 +14,13 @@ RUN curl -svL \
 
 RUN git clone https://github.com/WiringPi/WiringPi.git && \
   cd WiringPi && \
-  ./build
+  WIRINGPI_SUDO= ./build
 
 RUN mkdir -p /go/src/github.com/icco/lights
 WORKDIR /go/src/github.com/icco/lights
 
 COPY .	.
-RUN go get -d -v ./...
+RUN go mod download
 
 RUN go build -o /go/bin/lights ./lights
 RUN go build -o /go/bin/cube ./cube
